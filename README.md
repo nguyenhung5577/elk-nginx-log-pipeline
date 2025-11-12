@@ -1,3 +1,5 @@
+# elk-nginx-log-pipeline
+Collect, parse, and visualize Nginx logs with Logstash → Elasticsearch → Kibana.
 # Giám sát log tập trung với ELK Stack
 
 Dự án này đáp ứng yêu cầu “Monitoring Infrastructure with ELK Stack”: chạy Elasticsearch, Logstash, Kibana và Nginx bằng Docker Compose, thu thập log Nginx vào Elasticsearch, và trình diễn một visualization đơn giản trên Kibana.
@@ -78,3 +80,4 @@ docker compose down -v
 ```
 
 Lệnh trên dừng tất cả dịch vụ và xóa volume `esdata`, `shared-logs`.
+
