@@ -16,6 +16,16 @@ Client traffic → Nginx → shared-logs volume → Logstash → Elasticsearch �
 - **Kibana**: tạo data view `nginx-*`, khám phá log và dựng visualization (ví dụ Requests per status code).
 - **`scripts/log_generator.py`**: mô phỏng traffic bình thường, brute-force `/login`, và directory scan để nhanh chóng có dữ liệu demo.
 
+### Các trường log nổi bật
+
+Nginx xuất log dạng JSON với một số trường hữu ích để dựng dashboard:
+
+- `request_time` (s): tổng thời gian xử lý request.
+- `request_length`: kích thước request nhận từ client.
+- `bytes_sent` và `body_bytes_sent`: dung lượng trả về cho client.
+- `status_family`: Logstash suy ra nhóm mã trạng thái (`200s`, `400s`, ...), tiện cho biểu đồ stacked.
+- Các trường cơ bản khác: `request_method`, `request_uri`, `remote_addr`, `http_user_agent`, `host`, `server_protocol`.
+
 ## Cấu trúc
 
 ```
@@ -80,4 +90,3 @@ docker compose down -v
 ```
 
 Lệnh trên dừng tất cả dịch vụ và xóa volume `esdata`, `shared-logs`.
-
