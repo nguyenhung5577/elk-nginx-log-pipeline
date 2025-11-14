@@ -25,6 +25,7 @@ Nginx xuất log dạng JSON với một số trường hữu ích để dựng 
 - `bytes_sent` và `body_bytes_sent`: dung lượng trả về cho client.
 - `status_family`: Logstash suy ra nhóm mã trạng thái (`200s`, `400s`, ...), tiện cho biểu đồ stacked.
 - Các trường cơ bản khác: `request_method`, `request_uri`, `remote_addr`, `http_user_agent`, `host`, `server_protocol`.
+- Để GeoIP luôn có dữ liệu khi demo nội bộ, Nginx tin tưởng header `X-Forwarded-For` và script tạo log sẽ gắn IP public giả lập (Google, Cloudflare, v.v.) cho mỗi request.
 
 ## Cấu trúc
 

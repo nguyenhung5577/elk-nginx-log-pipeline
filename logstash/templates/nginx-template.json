@@ -1,0 +1,37 @@
+{
+  "index_patterns": [
+    "nginx-*"
+  ],
+  "template": {
+    "settings": {
+      "number_of_shards": 1
+    },
+    "mappings": {
+      "dynamic": true,
+      "properties": {
+        "@timestamp": { "type": "date" },
+        "status": { "type": "integer" },
+        "status_family": { "type": "keyword" },
+        "request_method": { "type": "keyword" },
+        "request_uri": { "type": "keyword" },
+        "request_length": { "type": "integer" },
+        "request_time": { "type": "float" },
+        "request_time_ms": { "type": "float" },
+        "bytes_sent": { "type": "long" },
+        "body_bytes_sent": { "type": "long" },
+        "bytes_sent_kb": { "type": "float" },
+        "remote_addr": { "type": "ip" },
+        "http_user_agent": { "type": "text", "fields": { "keyword": { "type": "keyword" } } },
+        "http_referer": { "type": "text", "fields": { "keyword": { "type": "keyword" } } },
+        "geoip": {
+          "properties": {
+            "ip": { "type": "ip" },
+            "latitude": { "type": "half_float" },
+            "longitude": { "type": "half_float" },
+            "location": { "type": "geo_point" }
+          }
+        }
+      }
+    }
+  }
+}
